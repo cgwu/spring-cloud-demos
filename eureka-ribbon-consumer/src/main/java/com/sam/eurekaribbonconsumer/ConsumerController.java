@@ -19,9 +19,22 @@ public class ConsumerController {
 
     @Autowired
     private RestTemplate restTemplate;
+    @Autowired
+    private HelloService helloService;
 
-    @RequestMapping(value="/ribbon-consumer", method = RequestMethod.GET)
-    public String index(){
-        return "消费HelloService: "+ restTemplate.getForEntity("http://HELLO-SERVICE/hello",String.class).getBody();
+    @RequestMapping(value = "/ribbon-consumer", method = RequestMethod.GET)
+    public String index() {
+        return "消费HelloService: " + restTemplate.getForEntity("http://HELLO-SERVICE/hello", String.class).getBody();
     }
+
+    @RequestMapping(value = "/sayhi-consumer", method = RequestMethod.GET)
+    public String sayHiConsumer(String name) {
+        return "消费SayHiService: " + restTemplate.getForEntity("http://HELLO-SERVICE/sayhi?name={0}", String.class, name).getBody();
+    }
+
+    @RequestMapping(value = "/sayhi2", method = RequestMethod.GET)
+    public String sayHiHystrix(String name) {
+        return helloService.sayHi(name);
+    }
+
 }
