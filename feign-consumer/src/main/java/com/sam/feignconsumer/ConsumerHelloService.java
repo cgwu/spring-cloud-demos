@@ -6,6 +6,6 @@ import org.springframework.cloud.netflix.feign.FeignClient;
 /**
  * Created by sam on 17-11-29.
  */
-@FeignClient("HELLO-SERVICE")
+@FeignClient(value = "HELLO-SERVICE", fallback = HelloRefactorFallback.class)
 public interface ConsumerHelloService extends HelloRefactorService {
 }

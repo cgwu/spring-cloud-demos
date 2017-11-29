@@ -41,6 +41,7 @@ public class ConsumerRefactorController {
         log.info("sayhi5: {}", user.toString());
         String result3 = helloService.sayhi(new UserEntity("李四", 40));
         log.info("sayhi6: {}", result3);
-        return "调用HelloService.sayhi 1 2 3: " + result1 + user.toString() + result3;
+        return String.join("<br>", "调用HelloService.sayhi 1 2 3: "
+                , result1, user.toString(), result3);
     }
 }
