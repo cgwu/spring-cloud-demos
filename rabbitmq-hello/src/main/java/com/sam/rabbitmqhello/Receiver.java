@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 /**
  * Created by sam on 17-12-1.
  */
-//@Component
+@Component
 @Slf4j
 @RabbitListener(queues = "hello-key")
 public class Receiver {
